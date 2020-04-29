@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container" style="height: 800px !important;">
+    
+        <center>
+            <!--<img src="{% static 'img/cta-img.png' %}" alt="" style="background: black;" class="mt-5">-->
+        </center>
+        <div class="heading">
+            Add new courses and schedule
+        </div>
+        <form method="POST" action="timetable" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div class="form-group mt-3">
+            <label for="">Enter Course Name</label>
+            <input type="text" class="form-control" name="course" id="" placeholder="Course Name" required>
+            <label for="">Monday Time</label>
+            <input type="text" class="form-control" name="mon" id="" placeholder="Monday Time" required >
+            <label for="">Tuesday Time</label>
+            <input type="text" class="form-control" name="tue" id="" placeholder="Tuesday Time" required >
+            <label for="">Wednesday Time</label>
+            <input type="text" class="form-control" name="wed" id="" placeholder="Wednesday Time" required >
+            <label for="">Thursday Time</label>
+            <input type="text" class="form-control" name="thu" id="" placeholder="Thursday Time" required >
+            <label for="">Friday Time</label>
+            <input type="text" class="form-control" name="fri" id="" placeholder="Friday Time" required >
+            <label for="">Saturday Time</label>
+            <input type="text" class="form-control" name="sat" id="" placeholder="Saturday Time" required >
+            <label for="">Sunday Time</label>
+            <input type="text" class="form-control" name="sun" id="" placeholder="Sunday Time" required >
+            
+            
+            <center>
+                <div class="inline mt-3 mb-5 col-md-12 col-sm-12">
+                    <input type="submit" class="btn btn-primary mb-2 " value="Save" style="width: 200px;">
+                    <input type="reset"  class="btn btn-primary mb-2" value="Reset" style="width: 200px;">
+                
+                </div>
+            </center>   
+
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

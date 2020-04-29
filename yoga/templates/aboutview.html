@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="heading" style="margin-top: 65px;">
+    about view
+</div>
+
+<div class="col-md-12 pr-3 pl-3 mt-3">
+    <div id="divPrint">
+    <table class="table table-sm table-striped " style="text-align: center;" id="">
+        <thead>
+            <tr>
+            <th scope="col">descriptions</th>
+            
+            <th scope="col">Edit</th>
+        
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+            
+            <td>{{i.des }}</td>
+            
+            <td><button  class="btn btn-success" data-target="#editmodel{{ i.id }}" data-toggle="modal" value="Edit">Edit</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+   <!--<button class="btn btn-success w-30 mt-2 ml-2" onclick="CallPrint('divPrint');"> Print</button>-->
+              
+</div>
+
+<!--Edit Modal --------------------------------------------------------------------------------------------->
+{% for i in data %}
+<form action="{% url 'edit_delete_about' i.id 'Edit' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="modal" id="editmodel{{ i.id }}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="font-family: 'Times New Roman', Times, serif;">
+                <h3>Edit About Descriptions</h3>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                    <div class="form-group">
+                        <label id="editlable">Descriptions</label>
+                        <input type="text" name="des" value="{{ i.des }}" class="form-control" required>
+                        
+                    </div>
+                
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button class="btn btn-success" type="submit">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+{% endfor %}
+
+
+
+{% endblock %}
